@@ -12,13 +12,13 @@ import { getReducer, setQueryURL } from 'sparql-connect';
 import config from 'config';
 import { items } from 'js/components/router/component-list';
 
-setQueryURL(config.POP5_ENDPOINT);
+setQueryURL(config.CENSUS_POINT_ENDPOINT);
 const store = configureStore(getReducer());
 
 export default () => (
 	<MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
 		<Provider store={store}>
-			<Router>
+			<Router basename={process.env.PUBLIC_URL}>
 				<div>
 					<Menu items={items} />
 					<Switch>
